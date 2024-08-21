@@ -661,6 +661,6 @@ syntax, temps(string)
 	
 end
 
-********************************************************************
-
+/********************************************************************
+v x.x.1 - 2022-02-24 turn into an rClass ado file. returning as local the name work wrk folder used.
 
