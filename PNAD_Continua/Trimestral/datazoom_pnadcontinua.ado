@@ -2,7 +2,7 @@
 *             datazoom_pnadcontinua.ado              *
 ******************************************************
 *version stata 14.2
-program define datazoom_pnadcontinua
+program define datazoom_pnadcontinua, rclass
 
 syntax, years(numlist) original(str) saving(str) [nid idbas idrs english]
 
@@ -52,13 +52,16 @@ if _rc==901 exit
 ********************************************************************
 
 /* Criando pastas para guardar arquivos da sessão */
+/* return value with the folder name              */
 capture mkdir pnadcontinua
+return local folder "pnadcontinua"
 
 if _rc == 693 {
    tempname numpasta
    local numpasta = 0
    while _rc == 693 {
       capture mkdir "pnadcontinua_`++numpasta'"
+	  return local folder "pnadcontinua_`++numpasta'"
    }
    cd "pnadcontinua_`numpasta'"
 }
