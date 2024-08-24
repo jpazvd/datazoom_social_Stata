@@ -54,19 +54,19 @@ if _rc==901 exit
 /* Criando pastas para guardar arquivos da sessão */
 /* return value with the folder name              */
 capture mkdir pnadcontinua
-return local folder "pnadcontinua"
 
 if _rc == 693 {
    tempname numpasta
    local numpasta = 0
    while _rc == 693 {
       capture mkdir "pnadcontinua_`++numpasta'"
-	  return local folder "pnadcontinua_`++numpasta'"
    }
    cd "pnadcontinua_`numpasta'"
+   return local folder "pnadcontinua_`numpasta'"
 }
 else {
    cd "pnadcontinua"
+   return local folder "pnadcontinua"
 }
 
 loc caminhoprin = c(pwd)
